@@ -8,6 +8,9 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 
+var indexRouter = require('./routes/index');
+var authRouter = require('./routes/auth');
+
 var app = express();
 
 app.locals.pluralize = require('pluralize');
@@ -22,7 +25,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 app.use('/', indexRouter);
+app.use('/', authRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
